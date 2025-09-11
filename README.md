@@ -1,3 +1,8 @@
+High Level Design
+
+![alt text](https://github.com/karangupta-dev/REST-ollama-sample/blob/master/src/main/resources/static/REST-API-Ollama-System-Design.jpg?raw=true)
+
+
 1. Download and install Ollama on local.  
    1.1 By running ollama help you get to what all commands are supported by ollama  
    1.2 Run command ollama run llama3.2:3b
