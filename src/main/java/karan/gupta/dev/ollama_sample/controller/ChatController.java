@@ -32,7 +32,7 @@ public class ChatController {
         try {
             String response = chatClient.prompt()
                     .user(chatRequest.query())
-//                    .tools(weatherTool)
+                    .tools(weatherTool)
                     .call()
                     .content();
 

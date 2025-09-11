@@ -24,23 +24,23 @@ public class WeatherTool {
         this.restClient = RestClient.builder().build();
     }
 
-    @Tool(description = "Get the weather for a given location")
-    public WeatherResponse getWeather(WeatherRequest weatherRequest) {
+    @Tool(description = "Get the weather for a given location, the tool requires city name. Its API key is configured in the application properties.")
+    public String getWeather(String city) { // TODO: check how to map custom request objects
         // Use UriComponentsBuilder for clean endpoint construction, with path from config
-        log.info("Received lat lon: {}",  weatherRequest.lat() + " " + weatherRequest.lon());
+        log.info("Received city name: {}",  city);
 
         try{
             String endpoint = UriComponentsBuilder
-                    .fromPath(configProperties.getUrl())
-                    .queryParam("lat", weatherRequest.lat())
-                    .queryParam("lon", weatherRequest.lon())
-                    .queryParam("appid", configProperties.getApiKey())
+                    .fromUriString(configProperties.getUrl())
+                    .queryParam("key", configProperties.getKey())
+                    .queryParam("q", city)
+                    .queryParam("aqi", "no")
                     .build()
                     .toUriString();
-            WeatherResponse response = restClient.get()
+            String response = restClient.get()
                     .uri(endpoint)
                     .retrieve()
-                    .body(WeatherResponse.class);
+                    .body(String.class); // TODO: check how to use custom json response
 
             log.info("Weather API response: {}", response);
             return response;
