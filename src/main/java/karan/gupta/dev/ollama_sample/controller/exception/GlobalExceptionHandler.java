@@ -19,10 +19,10 @@ public class GlobalExceptionHandler {
                                                                           WebRequest webRequest){
         DetailedErrorResponse detailedErrorResponse = new DetailedErrorResponse(
                 webRequest.getDescription(false),
-                HttpStatus.BAD_REQUEST,
+                exception.status(),
                 exception.getMessage()
         );
-        return new ResponseEntity<>(detailedErrorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(detailedErrorResponse, exception.status());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

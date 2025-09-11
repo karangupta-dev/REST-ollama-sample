@@ -1,0 +1,21 @@
+package karan.gupta.dev.ollama_sample.repository.models;
+
+import java.util.List;
+
+public record Hourly(
+    long dt,
+    double temp,
+    double feels_like,
+    int pressure,
+    int humidity,
+    double dew_point,
+    double uvi,
+    int clouds,
+    int visibility,
+    double wind_speed,
+    int wind_deg,
+    double wind_gust,
+    List<Weather> weather,
+    double pop
+) {}
+
