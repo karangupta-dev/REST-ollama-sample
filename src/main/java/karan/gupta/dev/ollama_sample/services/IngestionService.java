@@ -18,6 +18,7 @@ public class IngestionService implements CommandLineRunner {
         this.vectorStore = vectorStore;
     }
 
+    // "classpath" - looks up address from /resources folder
     @Value("classpath:/static/docs/economy_forecast_2025.pdf")
     private Resource marketPDF;
 
